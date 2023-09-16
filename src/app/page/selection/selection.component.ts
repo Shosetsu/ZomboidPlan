@@ -45,14 +45,9 @@ export class SelectionComponent {
     'background-color': 'hsl(' + (2 + 200 * (this.score / 100)) + ', 80%, 42%)',
   };
 
-  get isCompeleted(): boolean {
-    return (
-      this.score >= 0 &&
-      this.selection.every((item) =>
-        item.selection.some((card) => card.checked)
-      )
-    );
-  }
+  isCompeleted =
+    this.score >= 0 &&
+    this.selection.every((item) => item.selection.some((card) => card.checked));
 
   checkAganist(card: Card, item: Selection): void {
     if (!item.multi) {
@@ -80,5 +75,10 @@ export class SelectionComponent {
       'background-color':
         'hsl(' + (2 + 200 * (this.score / 100)) + ', 80%, 42%)',
     };
+    this.isCompeleted =
+      this.score >= 0 &&
+      this.selection.every((item) =>
+        item.selection.some((card) => card.checked)
+      );
   }
 }
