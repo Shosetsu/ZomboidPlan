@@ -1,0 +1,86 @@
+p {
+  margin: 0;
+
+  &.b {
+    font-weight: bold;
+  }
+}
+// 48
+.fw48 {
+  font-size: 6.4rem;
+}
+// 28
+.fw28 {
+  font-size: 3.8rem;
+}
+// 一号
+.fwN1 {
+  font-size: 3.4rem;
+}
+// 二号
+.fwN2 {
+  font-size: 2.9rem;
+}
+// 小二
+.fwNs2 {
+  font-size: 2.4rem;
+}
+// 三号
+.fwN3 {
+  font-size: 2.1rem;
+}
+// 小五
+.fwNs5 {
+  font-size: 1.2rem;
+}
+
+.f-pr {
+  color: red;
+}
+.f-pg {
+  color: #00b050;
+}
+.f-red {
+  color: #c00000;
+}
+.f-green {
+  color: #70ad47;
+}
+.f-blue {
+  color: #0070c0;
+}
+.f-lb {
+  color: #00b0f0;
+}
+
+.ff-hwxw {
+  font-family: "华文新魏";
+}
+.ff-hyyk {
+  font-family: "汉仪颜楷简", "华文行楷";
+}
+.ff-hyqy {
+  font-family: "汉仪青云简", "华文行楷";
+}
+.ff-fsaj {
+  font-family: "汉仪放肆骄傲体简", "华文行楷";
+}
+
+.ti0 {
+  text-indent: unset;
+}
+.ti1 {
+  text-indent: 1em;
+}
+.ti2 {
+  text-indent: 2em;
+}
+.ti3 {
+  text-indent: 3em;
+}
+.ti4 {
+  text-indent: 4em;
+}
+.ti5 {
+  text-indent: 5em;
+}

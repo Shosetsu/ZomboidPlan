@@ -1,0 +1,28 @@
+<section class="main">
+  <div class="score" [ngStyle]="scoreStyle">{{score}}</div>
+  <div class="selection-warpper" *ngFor="let item of selection">
+    <div class="title">
+      <p class="ff-hyyk fw28">{{item.name}}</p>
+      <p class="f-blue ff-hyqy fwNs2">{{item.description}}</p>
+      <p class="f-blue ff-hyqy fwN3">{{item.detail}}</p>
+    </div>
+    <div class="selection" [class.flex]="item.layout==='flex'" [class.grid]="item.layout==='grid'">
+      <label class="card" *ngFor="let card of item.selection">
+        <input type="checkbox" [(ngModel)]="card.checked" hidden (ngModelChange)="checkAganist(card,item)">
+        <div class="img-block">
+          <img src="assets/image/{{item.name}}/{{card.icon}}.png">
+        </div>
+        <p class="ff-hyyk fwNs5">{{card.name}}</p>
+        <p class="ff-hyyk" [class.f-pg]="card.point>0" [class.f-pr]="card.point<0">
+          &nbsp;{{card.point|count}}&nbsp;
+        </p>
+        <p class="ff-fsaj" [innerHTML]="card.description"></p>
+        <p class="ff-fsaj f-lb" [innerHTML]="card.addition"></p>
+      </label>
+    </div>
+  </div>
+  <div class="end-position" [hidden]="!isCompeleted"></div>
+  <a class="end-select" [class.show]="isCompeleted" routerLink="score">
+    <a class="arrow"></a>
+  </a>
+</section>
