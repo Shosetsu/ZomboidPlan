@@ -54,10 +54,13 @@ export class SelectionComponent {
       item.selection.forEach(
         (loopItem) => loopItem !== card && (loopItem.checked = false)
       );
-    } else if (card.aganist?.length) {
-      item.selection.forEach(
-        (loopItem) =>
-          card.aganist?.includes(loopItem.name) && (loopItem.checked = false)
+    }
+    if (card.aganist?.length) {
+      this.selection.forEach((ls) =>
+        ls.selection.forEach(
+          (loopItem) =>
+            card.aganist?.includes(loopItem.name) && (loopItem.checked = false)
+        )
       );
     }
 
