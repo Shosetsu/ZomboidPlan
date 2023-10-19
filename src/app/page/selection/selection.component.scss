@@ -85,7 +85,7 @@
 .score {
   position: fixed;
   top: 2rem;
-  right: calc(50vw - 27.5rem);
+  right: calc(50vw - 27rem);
 
   min-width: 3rem;
   height: 3rem;
@@ -106,5 +106,8 @@
 
   @media screen and (min-width: 1096px) {
     right: calc(50vw - 34rem);
+  }
+  @media screen and (max-width: 375px) {
+    right: calc(50vw - 22.5rem);
   }
 }
