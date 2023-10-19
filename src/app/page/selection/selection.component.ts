@@ -8,7 +8,6 @@ export type Card = {
   point: number;
   description: string;
   addition?: string;
-  checked?: boolean;
   aganist?: string[];
 };
 
@@ -28,15 +27,16 @@ export type Selection = {
 })
 export class SelectionComponent {
   private memory = inject(MemoryService);
-
   selection: Selection[] = selection;
+
+  checkedMap: Record<string, boolean> = this.memory.getData('sl') ?? {};
 
   score =
     70 +
     this.selection
       .map((item) =>
         item.selection
-          .filter((card) => card.checked)
+          .filter((card) => this.checkedMap[card.name])
           .reduce((p, c) => (p += c.point), 0)
       )
       .reduce((p, c) => (p += c), 0);
@@ -47,19 +47,23 @@ export class SelectionComponent {
 
   isCompeleted =
     this.score >= 0 &&
-    this.selection.every((item) => item.selection.some((card) => card.checked));
+    this.selection.every((item) =>
+      item.selection.some((card) => this.checkedMap[card.name])
+    );
 
   checkAganist(card: Card, item: Selection): void {
     if (!item.multi) {
       item.selection.forEach(
-        (loopItem) => loopItem !== card && (loopItem.checked = false)
+        (loopItem) =>
+          loopItem !== card && (this.checkedMap[loopItem.name] = false)
       );
     }
     if (card.aganist?.length) {
       this.selection.forEach((ls) =>
         ls.selection.forEach(
           (loopItem) =>
-            card.aganist?.includes(loopItem.name) && (loopItem.checked = false)
+            card.aganist?.includes(loopItem.name) &&
+            (this.checkedMap[loopItem.name] = false)
         )
       );
     }
@@ -70,7 +74,7 @@ export class SelectionComponent {
       this.selection
         .map((item) =>
           item.selection
-            .filter((card) => card.checked)
+            .filter((card) => this.checkedMap[card.name])
             .reduce((p, c) => (p += c.point), 0)
         )
         .reduce((p, c) => (p += c), 0);
@@ -81,7 +85,12 @@ export class SelectionComponent {
     this.isCompeleted =
       this.score >= 0 &&
       this.selection.every((item) =>
-        item.selection.some((card) => card.checked)
+        item.selection.some((card) => this.checkedMap[card.name])
       );
+
+    Object.entries(this.checkedMap).forEach(([k, v]) => {
+      if (!v) delete this.checkedMap[k];
+    });
+    this.memory.setData('sl', this.checkedMap);
   }
 }

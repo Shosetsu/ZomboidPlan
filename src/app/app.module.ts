@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArrowComponent } from './components/arrow/arrow.component';
 import { GuideComponent } from './page/guide/guide.component';
+import { ScoreComponent } from './page/score/score.component';
 import { SelectionComponent } from './page/selection/selection.component';
 import { CountPipe } from './pipes/count.pipe';
 
@@ -13,6 +14,7 @@ import { CountPipe } from './pipes/count.pipe';
     AppComponent,
     GuideComponent,
     SelectionComponent,
+    ScoreComponent,
     ArrowComponent,
     CountPipe,
   ],

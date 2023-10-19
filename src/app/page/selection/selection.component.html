@@ -8,7 +8,7 @@
     </div>
     <div class="selection" [class.flex]="item.layout==='flex'" [class.grid]="item.layout==='grid'">
       <label class="card" *ngFor="let card of item.selection">
-        <input type="checkbox" [(ngModel)]="card.checked" hidden (ngModelChange)="checkAganist(card,item)">
+        <input type="checkbox" [(ngModel)]="checkedMap[card.name]" hidden (ngModelChange)="checkAganist(card,item)">
         <div class="img-block">
           <img src="assets/image/{{item.name}}/{{card.icon}}.png">
         </div>
@@ -22,7 +22,7 @@
     </div>
   </div>
   <div class="end-position" [hidden]="!isCompeleted"></div>
-  <a class="end-select" [class.show]="isCompeleted" routerLink="score">
+  <a class="end-select" [class.show]="isCompeleted" routerLink="/score">
     <a class="arrow"></a>
   </a>
 </section>
